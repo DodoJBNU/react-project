@@ -1,15 +1,30 @@
 const express = require("express");
 const app = express();
 const path = require("path");
+const bodyparser = require("body-parser");
+const fs = require("fs");
 
-app.use(express.static(path.join(__dirname, "mytrail/build")));
+app.use(bodyparser.json());
+app.use(bodyparser.urlencoded({ extended: true }));
 
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
+const data = fs.readFileSync("./src/config/db.json");
+const conf = JSON.parse(data);
+const mysql = require("mysql");
+
+const connection = mysql.createConnection({
+  host: conf.host,
+  user: conf.user,
+  password: conf.password,
+  port: conf.port,
+  database: conf.database,
 });
 
-app.get("*", function (req, res) {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
+connection.connect();
+
+app.get("/", (req, res) => {
+  connection.query("SELECT * FROM users", (err, rows, fields) => {
+    res.send(rows);
+  });
 });
 
 app.listen(3001, () => {

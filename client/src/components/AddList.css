@@ -1,0 +1,83 @@
+.AddList
+{
+   display: flex;
+   flex-direction: row;
+}
+.ListName
+{
+    margin-left: 8vh;
+    font-family: var(--font-NotoBlack);
+    font-size: 4vh;
+    line-height: 8vh;
+    width:'32vw';
+    height:'8vh';
+    background-color: rgba(157,211,168,1);
+    text-align: center;
+    flex:1;
+    flex-direction: row;
+    
+}
+
+
+.AddListMain
+{
+    background-color : rgba(157,211,168,1);
+    width : 40vw;
+    height: 100vh;
+}
+
+.TrailNameBox, .TrailFeatureBox, .TrailFacilityBox, .Temp1box, .Temp2Box
+{
+    text-align: center;
+}
+.TrailName
+{
+    margin-top: 5vh;
+    width:30vw;
+    height:8vh;
+    text-align: center;
+    border: 0.1vh solid;
+}
+
+.TrailFeature{
+    margin-top: 5vh;
+    width:30vw;
+    height:8vh;
+    text-align: center;
+    border: 0.1vh solid;
+}
+.TrailFacility, .Temp1
+{
+    margin-top: 5vh;
+    width:30vw;
+    height:8vh;
+    text-align: center;
+    border: 0.1vh solid;
+}
+
+.Temp2
+{
+    margin-bottom: 5vh;
+    margin-top: 5vh;
+    width:30vw;
+    height:8vh;
+    text-align: center;
+    border: 0.1vh solid;
+}
+
+.AddListAddButton
+{
+    margin-left: 3vh;
+    width:10vw;
+    height:12vh;
+    margin-top: 3vh;
+}
+.AddListAdd
+{
+    text-align: center;
+    display: flex;
+    line-height: 10.5vh;
+    font-family: var(--font-NotoMedium);
+    font-size:4vh;
+    margin-left: 4vh;
+}

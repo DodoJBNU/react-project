@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Login.css';
 import { Link } from 'react-router-dom';
 import TrailImage from '../img/Headimg.png';
+import UsersAdd from '../components/UsersAdd';
 
 function Login() {
   const [isSignIn, setIsSignIn] = useState(true);
@@ -64,6 +65,7 @@ function Login() {
                 <Link to="/Main">
                   <button>로그인</button>
                 </Link>
+                <UsersAdd />
                 <p>
                   <b onClick={toggle} className="pointer">
                     회원가입

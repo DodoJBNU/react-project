@@ -3,6 +3,7 @@ import './Login.css';
 import { Link } from 'react-router-dom';
 import TrailImage from '../img/Headimg.png';
 import UsersAdd from '../components/UsersAdd';
+import UsersLogin from '../components/UsersLogin';
 
 function Login() {
   const [isSignIn, setIsSignIn] = useState(true);
@@ -25,22 +26,10 @@ function Login() {
             <div className="form-wrapper align-items-center">
               <div className="form sign-up">
                 <div className="input-group">
-                  <i className="bx bxs-user"></i>
-                  <input type="text" placeholder="아이디" />
-                </div>
-                {/* 이메일 <div className="input-group">
-                  <i className='bx bx-mail-send'></i>
-                  <input type="email" placeholder="Email"/>
-                </div> */}
-                <div className="input-group">
                   <i className="bx bxs-lock-alt"></i>
-                  <input type="password" placeholder="비밀번호" />
+                  <UsersAdd />
                 </div>
-                <div className="input-group">
-                  <i className="bx bxs-lock-alt"></i>
-                  <input type="password" placeholder="비밀번호 확인" />
-                </div>
-                <button>회원가입</button>
+
                 <p>
                   <b onClick={toggle} className="pointer">
                     로그인
@@ -56,16 +45,8 @@ function Login() {
               <div className="form sign-in">
                 <div className="input-group">
                   <i className="bx bxs-user"></i>
-                  <input type="text" placeholder="아이디" />
+                  <UsersLogin />
                 </div>
-                <div className="input-group">
-                  <i className="bx bxs-lock-alt"></i>
-                  <input type="password" placeholder="비밀번호" />
-                </div>
-                <Link to="/Main">
-                  <button>로그인</button>
-                </Link>
-                <UsersAdd />
                 <p>
                   <b onClick={toggle} className="pointer">
                     회원가입

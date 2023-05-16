@@ -1,56 +1,59 @@
 import React from 'react';
 import axios from 'axios';
 
-class UsersAdd extends React.Component {
+class UsersLogin extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       user_id: '',
       psword: '',
+      successMessage: '',
       errorMessage: '',
-      successMessage: '', // 완료 메시지 상태 추가
     };
   }
 
   handleFormSubmit = (e) => {
     e.preventDefault();
-    this.addUsers({ action: 'signup' }) // action 값을 signup으로 설정
+    this.loginUser()
       .then((response) => {
         console.log(response.data);
+        const user_id = this.state.user_id;
+        const url = `/Main?user_id=${user_id}`;
+        window.location.href = url;
+
         this.setState({
           user_id: '',
           psword: '',
+          successMessage: '로그인 성공',
           errorMessage: '',
-          successMessage: '회원가입이 완료되었습니다.', // 완료 메시지 설정
         });
-        window.location.reload();
       })
       .catch((error) => {
         console.error(error);
         this.setState({
-          errorMessage: '이미 존재하는 ID입니다.',
-          successMessage: '', // 완료 메시지 초기화
+          successMessage: '',
+          errorMessage: '아이디 또는 비밀번호가 일치하지 않습니다.',
         });
       });
   };
 
   handleValueChange = (e) => {
-    let nextState = {};
-    nextState[e.target.name] = e.target.value;
-    this.setState(nextState);
+    this.setState({ [e.target.name]: e.target.value });
   };
 
-  addUsers = (data) => {
+  loginUser = () => {
     const url = '/';
     const formData = new FormData();
     formData.append('user_id', this.state.user_id);
     formData.append('psword', this.state.psword);
-    formData.append('action', data.action); // action 값을 요청에 추가
+    formData.append('action', 'login');
+
     const config = {
       headers: {
         'content-type': 'multipart/form-data',
       },
     };
+
     return axios.post(url, formData, config);
   };
 
@@ -78,7 +81,7 @@ class UsersAdd extends React.Component {
         />
         <br />
         <button type="submit" style={{ marginTop: '2vh' }}>
-          회원가입
+          로그인
         </button>
         {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
         {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
@@ -87,4 +90,4 @@ class UsersAdd extends React.Component {
   }
 }
 
-export default UsersAdd;
+export default UsersLogin;

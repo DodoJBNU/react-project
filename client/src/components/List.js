@@ -1,13 +1,15 @@
 import React from 'react';
-
+import { Link, useLocation } from 'react-router-dom';
 import inquiryImg from '../img/inquiry.png';
 import AddImg from '../img/add.png';
 import TrailImg from '../img/mytrail.png';
 import favImg from '../img/fav.png';
 import exitImg from '../img/exit.png';
-import { Link } from 'react-router-dom';
 function List() {
   // 목록 데이터
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const user_id = searchParams.get('user_id');
 
   return (
     <div
@@ -26,18 +28,18 @@ function List() {
         <div>
           <img className="l1img" alt="inquiryImg" src={inquiryImg} />
         </div>
-        <div className="l1font">
-          <Link to="/Add" type="button">
-            산책로 조회
-          </Link>
-        </div>
+        <div className="l1font">산책로 조회</div>
       </div>
 
       <div className="item2">
         <div>
           <img className="l2img" alt="addImg" src={AddImg} />
         </div>
-        <div className="l2font">산책로 추가</div>
+        <div className="l2font">
+          <Link to={`/Add?user_id=${user_id}`} type="button">
+            산책로 추가
+          </Link>
+        </div>
       </div>
 
       <div className="item3">

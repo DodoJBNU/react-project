@@ -3,9 +3,13 @@ import React from 'react';
 import './AddList.css';
 import ImageButton from './ImageButton';
 import backImg from '../img/back.png';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Addimg from '../img/add.png';
 function AddList() {
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const user_id = searchParams.get('user_id');
+
   return (
     <div className="AddListMain">
       <div className="AddList">
@@ -14,7 +18,7 @@ function AddList() {
           className="AddListButton1"
           style={{ marginTop: '1.5vh', marginRight: '1vh' }}
         >
-          <Link to="/Main">
+          <Link to={`/Main?user_id=${user_id}`}>
             <ImageButton
               src={backImg}
               alt="AddListBackButton"

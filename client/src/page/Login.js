@@ -29,7 +29,6 @@ function Login() {
                   <i className="bx bxs-lock-alt"></i>
                   <UsersAdd />
                 </div>
-
                 <p>
                   <b onClick={toggle} className="pointer">
                     로그인

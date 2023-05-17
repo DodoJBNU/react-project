@@ -2,6 +2,7 @@ import React from 'react';
 import Head from '../components/Head';
 import Map from '../components/Map';
 import AddList from '../components/AddList';
+import MapDistance from '../components/MapDistance';
 function Add() {
   return (
     <div
@@ -17,7 +18,7 @@ function Add() {
       </div>
       <div style={{ flex: 1, display: 'flex' }}>
         <div style={{ flex: 6 }}>
-          <Map />
+          <MapDistance />
         </div>
         <div
           style={{

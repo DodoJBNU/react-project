@@ -8,13 +8,22 @@ function Map() {
     const container = document.getElementById('map');
     const options = {
       center: new kakao.maps.LatLng(35.846754, 127.129422),
-      level: 4
+      level: 4,
     };
     const map = new kakao.maps.Map(container, options);
   }, []);
 
   return (
-    <div id="map" style={{width:'100%', height:'100%', boxSizing: 'border-box', padding: '0' , border:'0.5vh solid'}}></div>
+    <div
+      id="map"
+      style={{
+        width: '100%',
+        height: '100%',
+        boxSizing: 'border-box',
+        padding: '0',
+        border: '0.5vh solid',
+      }}
+    ></div>
   );
 }
 

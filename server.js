@@ -9,9 +9,6 @@ const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const multer = require("multer");
-const upload = multer({ dest: "./upload" });
-
 //router
 const login = require("./src/routes/login");
 

@@ -11,7 +11,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 //router
 const login = require("./src/routes/login");
+const add = require("./src/routes/add");
 
 app.use("/", login);
+app.use("/Add", add);
 
 module.exports = app;

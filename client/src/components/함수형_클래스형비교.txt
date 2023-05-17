@@ -1,0 +1,88 @@
+import React, { useState } from 'react';
+import axios from 'axios';
+
+function UsersAdd() {
+  const [user_ids, setUser_ids] = useState([]);
+  const [psword, setPsword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    addUsers({ action: 'signup' }) // action 값을 signup으로 설정
+      .then((response) => {
+        console.log(response.data);
+        setUser_ids([...user_ids, user_id]); // 새로운 user_id를 배열에 추가
+        setPsword('');
+        setErrorMessage('');
+        setSuccessMessage('회원가입이 완료되었습니다.'); // 완료 메시지 설정
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.error(error);
+        setErrorMessage('이미 존재하는 ID입니다.');
+        setSuccessMessage(''); // 완료 메시지 초기화
+      });
+  };
+
+  const handleValueChange = (e) => {
+    const { name, value } = e.target;
+    if (name === 'user_id') {
+      setUser_id(value);
+    } else if (name === 'psword') {
+      setPsword(value);
+    }
+  };
+
+  const addUsers = (data) => {
+    const url = '/';
+    const formData = new FormData();
+    formData.append('user_id', user_id);
+    formData.append('psword', psword);
+    formData.append('action', data.action); // action 값을 요청에 추가
+    const config = {
+      headers: {
+        'content-type': 'multipart/form-data',
+      },
+    };
+    return axios.post(url, formData, config);
+  };
+
+  return (
+    <form onSubmit={handleFormSubmit}>
+      <input
+        type="text"
+        name="user_id"
+        maxLength="25"
+        value={user_id}
+        onChange={handleValueChange}
+        placeholder="아이디"
+      />
+      <br />
+      <input
+        style={{ marginTop: '2vh' }}
+        type="password"
+        name="psword"
+        maxLength="25"
+        value={psword}
+        onChange={handleValueChange}
+        placeholder="비밀번호"
+      />
+      <br />
+      <button type="submit" style={{ marginTop: '2vh' }}>
+        회원가입
+      </button>
+      {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+      {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
+      <ul>
+        {user_ids.map((user_id) => (
+          <li key={user_id}>{user_id}</li>
+        ))}
+      </ul>
+    </form>
+  );
+}
+
+export default UsersAdd;
+
+와 비교하여 참고.

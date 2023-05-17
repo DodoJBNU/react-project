@@ -1,14 +1,34 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './MapDistance.css';
+import ImageButton from './ImageButton';
+import backImg from '../img/back.png';
+import { Link, useLocation } from 'react-router-dom';
+import Addimg from '../img/add.png';
+import { IoIosAddCircleOutline } from 'react-icons/io';
+import axios from 'axios';
 
 function MapDistance() {
+  let latitude = [];
+  let longitude = [];
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const user_id = searchParams.get('user_id');
+
+  const [User_id, setUser_id] = useState('');
+  const [location1, setLocation1] = useState([]);
+  const [location2, setLocation2] = useState([]);
+  const [location3, setLocation3] = useState([]);
+  const [location4, setLocation4] = useState([]);
+  const [location5, setLocation5] = useState([]);
+
   useEffect(() => {
+    /// 아래는 Map
     const kakao = window.kakao;
 
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div
       mapOption = {
-        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-        level: 3, // 지도의 확대 레벨
+        center: new kakao.maps.LatLng(35.846754, 127.129422),
+        level: 4,
       };
 
     var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
@@ -23,8 +43,19 @@ function MapDistance() {
     // 지도를 클릭하면 선 그리기가 시작됩니다 그려진 선이 있으면 지우고 다시 그립니다
     kakao.maps.event.addListener(map, 'click', function (mouseEvent) {
       // 마우스로 클릭한 위치입니다
+      latitude = []; // 위도와 경도 초기화.
+      longitude = [];
       var clickPosition = mouseEvent.latLng;
 
+      var latlng = mouseEvent.latLng;
+      latitude.push(latlng.getLat());
+      longitude.push(latlng.getLat());
+      /*
+      for (let i = 0; i < latitude.length; i++) {
+        console.log(latitude[i]);
+        console.log(longitude[i]);
+      }
+      */
       if (!drawingFlag) {
         drawingFlag = true;
 
@@ -67,17 +98,13 @@ function MapDistance() {
         var movePath = [path[path.length - 1], mousePosition];
         moveLine.setPath(movePath);
         moveLine.setMap(map);
-        var latlng = mouseEvent.latLng;
-        var latitude = latlng.getLat();
-        var longitude = latlng.getLng();
 
         var distance = Math.round(clickLine.getLength() + moveLine.getLength());
         var content =
           '<div class="dotOverlay distanceInfo">총거리 <span class="number">' +
           distance +
-          '</span>m</div>';
-
-        showDistance(content, mousePosition);
+          '</span>m</div>' +
+          showDistance(content, mousePosition);
       }
     });
 
@@ -241,17 +268,150 @@ function MapDistance() {
     }
   });
 
+  const handleFormSubmit = (e) => {
+    addLocations({})
+      .then((response) => {
+        console.log(response.data);
+        setUser_id(user_id);
+        setLocation1([]);
+        setLocation2([]);
+        setLocation3([]);
+        setLocation4([]);
+        setLocation5([]);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+  const addLocations = () => {
+    const url = '/Add';
+    const formData = new FormData();
+    if (latitude[0] != null) {
+      location1.push(latitude[0]);
+      location1.push(longitude[0]);
+    }
+
+    if (latitude[1] != null) {
+      location2.push(latitude[1]);
+      location2.push(longitude[1]);
+    }
+
+    if (latitude[2] != null) {
+      location3.push(latitude[2]);
+      location3.push(longitude[2]);
+    }
+
+    if (latitude[3] != null) {
+      location4.push(latitude[3]);
+      location4.push(longitude[3]);
+    }
+
+    if (latitude[4] != null) {
+      location5.push(latitude[4]);
+      location5.push(longitude[4]);
+    }
+    formData.append('user_id', User_id);
+    formData.append('Location1', location1);
+    formData.append('Location2', location2);
+    formData.append('Location3', location3);
+    formData.append('Location4', location4);
+    formData.append('Location5', location5);
+    const config = {
+      headers: {
+        'content-type': 'multipart/from-data',
+      },
+    };
+
+    return axios.post(url, formData, config);
+  };
+
   return (
-    <div
-      id="map"
-      style={{
-        width: '100%',
-        height: '100%',
-        boxSizing: 'border-box',
-        padding: '0',
-        border: '0.5vh solid',
-      }}
-    ></div>
+    <form onSubmit={handleFormSubmit}>
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'row' }}>
+        <div
+          id="map"
+          style={{
+            boxSizing: 'border-box',
+            padding: '0',
+            border: '0.5vh solid',
+            flex: 6,
+          }}
+        ></div>
+        <div
+          className="AddListMain"
+          style={{
+            flex: 4,
+            boxSizing: 'border-box',
+            padding: '0',
+            border: '0.5vh solid',
+          }}
+        >
+          <div className="AddList">
+            <div className="ListName">산책로 추가 메뉴</div>
+            <div
+              className="AddListButton1"
+              style={{ marginTop: '1.5vh', marginRight: '1vh' }}
+            >
+              <Link to={`/Main?user_id=${user_id}`}>
+                <ImageButton
+                  src={backImg}
+                  alt="AddListBackButton"
+                  width={'3vw'}
+                  height={'5vh'}
+                />
+              </Link>
+            </div>
+          </div>
+          <hr />
+          <div className="TrailNameBox">
+            <input
+              className="TrailName"
+              type="text"
+              placeholder="산책로 이름 : 예 ) 덕진호 산책로"
+            />
+          </div>
+          <div className="TrailFeatureBox">
+            <input
+              className="TrailFeature"
+              type="text"
+              placeholder="산책로 특징을 적어주세요."
+            />
+          </div>
+          <div className="TrailFacilityBox">
+            <input
+              className="TrailFacility"
+              type="text"
+              placeholder="편의 시설을 입력해주세요."
+            />
+          </div>
+
+          <div className="Temp1Box">
+            <input className="Temp1" type="text" placeholder="임시" />
+          </div>
+          <div className="Temp2Box">
+            <input className="Temp2" type="text" placeholder="임시" />
+          </div>
+          <hr />
+          <div className="AddListAdd">
+            <button
+              type="submit"
+              style={{
+                backgroundColor: 'rgba(157,211,168,1)',
+                display: 'flex',
+              }}
+              className="AddListAddButton"
+            >
+              <IoIosAddCircleOutline
+                style={{ fontSize: '6vh', marginLeft: '4vh' }}
+              ></IoIosAddCircleOutline>
+              <span style={{ marginLeft: '7vh' }}>
+                <h1 style={{ lineHeight: '6vh' }}>산책로에 추가하기</h1>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
   );
 }
 

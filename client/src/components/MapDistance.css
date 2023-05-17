@@ -6,3 +6,99 @@
 .distanceInfo {position:relative;top:5px;left:5px;list-style:none;margin:0;}
 .distanceInfo .label {display:inline-block;width:50px;}
 .distanceInfo:after {content:none;}
+
+
+@font-face
+{
+  font-family:"NotoMedium";
+  src: url("../assets//fonts/Noto_Sans_KR/NotoSansKR-Medium.otf");
+}
+
+@font-face
+{
+  font-family:"NotoBlack";
+  src: url("../assets/fonts/Noto_Sans_KR/NotoSansKR-Black.otf");
+}
+
+:root
+{
+  --font-NotoBold: "NotoBold";
+  --font-NotoMedium : "NotoMedium";
+  --font-NotoBlack : "NotoBlack";
+}
+
+
+
+.AddList
+{
+   display: flex;
+   flex-direction: row;
+}
+.ListName
+{
+    margin-left: 8vh;
+    font-family: var(--font-NotoBlack);
+    font-size: 4vh;
+    line-height: 8vh;
+    width:'32vw';
+    height:'8vh';
+    background-color: rgba(157,211,168,1);
+    text-align: center;
+    flex:1;
+    flex-direction: row;
+    
+}
+
+
+.AddListMain
+{
+    background-color : rgba(157,211,168,1);
+    width : 40vw;
+    height: 100vh;
+}
+
+.TrailNameBox, .TrailFeatureBox, .TrailFacilityBox, .Temp1box, .Temp2Box
+{
+    text-align: center;
+}
+.TrailName
+{
+    margin-top: 5vh;
+    width:30vw;
+    height:8vh;
+    text-align: center;
+    border: 0.1vh solid;
+}
+
+.TrailFeature{
+    margin-top: 5vh;
+    width:30vw;
+    height:8vh;
+    text-align: center;
+    border: 0.1vh solid;
+}
+.TrailFacility, .Temp1
+{
+    margin-top: 5vh;
+    width:30vw;
+    height:8vh;
+    text-align: center;
+    border: 0.1vh solid;
+}
+
+.Temp2
+{
+    margin-bottom: 5vh;
+    margin-top: 5vh;
+    width:30vw;
+    height:8vh;
+    text-align: center;
+    border: 0.1vh solid;
+}
+
+.AddListAddButton
+{
+    width:33vw;
+    height: 6vh;
+    text-align: center;
+}

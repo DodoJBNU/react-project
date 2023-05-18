@@ -73,8 +73,7 @@ function AddList() {
 
         displayCircleDot(clickPosition, 0);
       } else {
-        if (locationTemp.length === 0)
-          locationTemp[locationTemp.length] = clickLine.getPath();
+        if (locationTemp.length === 0) locationTemp[locationTemp.length] = clickLine.getPath();
         locationTemp[locationTemp.length] = clickPosition;
         var path = clickLine.getPath();
         path.push(clickPosition);
@@ -94,11 +93,7 @@ function AddList() {
         moveLine.setMap(map);
 
         var distance = Math.round(clickLine.getLength() + moveLine.getLength());
-        var content =
-          '<div class="dotOverlay distanceInfo">총거리 <span class="number">' +
-          distance +
-          '</span>m</div>' +
-          showDistance(content, mousePosition);
+        var content = '<div class="dotOverlay distanceInfo">총거리 <span class="number">' + distance + '</span>m</div>' + showDistance(content, mousePosition);
       }
     });
 
@@ -179,10 +174,7 @@ function AddList() {
       if (distance > 0) {
         // 클릭한 지점까지의 그려진 선의 총 거리를 표시할 커스텀 오버레이를 생성합니다
         var distanceOverlay = new kakao.maps.CustomOverlay({
-          content:
-            '<div class="dotOverlay">거리 <span class="number">' +
-            distance +
-            '</span>m</div>',
+          content: '<div class="dotOverlay">거리 <span class="number">' + distance + '</span>m</div>',
           position: position,
           yAnchor: 1,
           zIndex: 2,
@@ -224,8 +216,7 @@ function AddList() {
 
       // 계산한 도보 시간이 60분 보다 크면 시간으로 표시합니다
       if (walkkTime > 60) {
-        walkHour =
-          '<span class="number">' + Math.floor(walkkTime / 60) + '</span>시간 ';
+        walkHour = '<span class="number">' + Math.floor(walkkTime / 60) + '</span>시간 ';
       }
       walkMin = '<span class="number">' + (walkkTime % 60) + '</span>분';
 
@@ -236,10 +227,7 @@ function AddList() {
 
       // 계산한 자전거 시간이 60분 보다 크면 시간으로 표시합니다
       if (bicycleTime > 60) {
-        bicycleHour =
-          '<span class="number">' +
-          Math.floor(bicycleTime / 60) +
-          '</span>시간 ';
+        bicycleHour = '<span class="number">' + Math.floor(bicycleTime / 60) + '</span>시간 ';
       }
       bicycleMin = '<span class="number">' + (bicycleTime % 60) + '</span>분';
 
@@ -255,8 +243,7 @@ function AddList() {
       content += '  </li>';
       content += '  <li>';
       content += '    <span class="label">자전거</span>';
-      content +=
-        '    <span class="number">' + bicycleHour + bicycleMin + '</span>';
+      content += '    <span class="number">' + bicycleHour + bicycleMin + '</span>';
       content += '  </li>';
       content += '</ul>';
 
@@ -307,80 +294,44 @@ function AddList() {
             flex: 6,
           }}
         ></div>
-        <div>
-          <div
-            className="AddListMain"
-            style={{
-              flex: 4,
-              boxSizing: 'border-box',
-              padding: '0',
-              border: '0.5vh solid',
-            }}
-          >
-            <div className="AddList">
-              <div className="ListName">산책로 추가 메뉴</div>
-              <div
-                className="AddListButton1"
-                style={{ marginTop: '1.5vh', marginRight: '1vh' }}
-              >
-                <Link to={`/Main?user_id=${user_id}`}>
-                  <ImageButton
-                    src={backImg}
-                    alt="AddListBackButton"
-                    width={'3vw'}
-                    height={'5vh'}
-                  />
-                </Link>
-              </div>
+        <div className="AddListMain" style={{ flex: 4, boxSizing: 'border-box', padding: '0', border: '0.5vh solid' }}>
+          <div className="AddList">
+            <div className="ListName">산책로 추가 메뉴</div>
+            <div className="AddListButton1" style={{ marginTop: '1.5vh', marginRight: '1vh' }}>
+              <Link to={`/Main?user_id=${user_id}`}>
+                <ImageButton src={backImg} alt="AddListBackButton" width={'3vw'} height={'5vh'} />
+              </Link>
             </div>
-            <hr />
-            <div className="TrailNameBox">
-              <input
-                className="TrailName"
-                type="text"
-                placeholder="산책로 이름 : 예 ) 덕진호 산책로"
-              />
-            </div>
-            <div className="TrailFeatureBox">
-              <input
-                className="TrailFeature"
-                type="text"
-                placeholder="산책로 특징을 적어주세요."
-              />
-            </div>
-            <div className="TrailFacilityBox">
-              <input
-                className="TrailFacility"
-                type="text"
-                placeholder="편의 시설을 입력해주세요."
-              />
-            </div>
+          </div>
+          <hr />
 
-            <div className="Temp1Box">
-              <input className="Temp1" type="text" placeholder="임시" />
+          <div className="AddListTextBox">
+            <div>
+              <input placeholder="산책로 이름" className="TrailNameText" type="text" />
             </div>
-            <div className="Temp2Box">
-              <input className="Temp2" type="text" placeholder="임시" />
+            <div>
+              <textarea className="FacilityNameText" placeholder="산책로 편의시설" />
             </div>
-            <hr />
-            <div className="AddListAdd">
-              <button
-                type="submit"
-                onClick={SaveLocations}
-                style={{
-                  backgroundColor: 'rgba(157,211,168,1)',
-                  display: 'flex',
-                }}
-                className="AddListAddButton"
-              >
-                <IoIosAddCircleOutline
-                  style={{ fontSize: '6vh', marginLeft: '4vh' }}
-                ></IoIosAddCircleOutline>
-                <span style={{ marginLeft: '7vh' }}>
-                  <h1 style={{ lineHeight: '6vh' }}>산책로에 추가하기</h1>
-                </span>
-              </button>
+            <div>
+              <textarea className="GuestBookText" placeholder="후기를 적어주세요!" />
             </div>
+          </div>
+          <hr />
+          <div className="AddListAdd">
+            <button
+              type="submit"
+              onClick={SaveLocations}
+              style={{
+                backgroundColor: 'rgba(157,211,168,1)',
+                display: 'flex',
+              }}
+              className="AddListAddButton"
+            >
+              <IoIosAddCircleOutline style={{ fontSize: '6vh', marginLeft: '4vh' }}></IoIosAddCircleOutline>
+              <span style={{ marginLeft: '7vh' }}>
+                <h1 style={{ lineHeight: '6vh' }}>산책로에 추가하기</h1>
+              </span>
+            </button>
           </div>
         </div>
       </div>

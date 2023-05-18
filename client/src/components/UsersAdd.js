@@ -58,24 +58,9 @@ class UsersAdd extends React.Component {
     const { user_id, psword, errorMessage, successMessage } = this.state;
     return (
       <form onSubmit={this.handleFormSubmit}>
-        <input
-          type="text"
-          name="user_id"
-          maxLength="25"
-          value={user_id}
-          onChange={this.handleValueChange}
-          placeholder="아이디"
-        />
+        <input type="text" name="user_id" maxLength="25" value={user_id} onChange={this.handleValueChange} placeholder="아이디" />
         <br />
-        <input
-          style={{ marginTop: '2vh' }}
-          type="password"
-          name="psword"
-          maxLength="25"
-          value={psword}
-          onChange={this.handleValueChange}
-          placeholder="비밀번호"
-        />
+        <input style={{ marginTop: '2vh' }} type="password" name="psword" maxLength="25" value={psword} onChange={this.handleValueChange} placeholder="비밀번호" />
         <br />
         <button type="submit" style={{ marginTop: '2vh' }}>
           회원가입

@@ -29,8 +29,8 @@ const add = (req, res) => {
       console.log(err);
     } else {
       id = rows[0].count + 1; // 예를들어 row가 4라면. 다음 id는 4+1 = 5
-      console.log(id);
-
+      // id 가져오기 완료
+      // 위도 경도 추가 시작.
       sql = "INSERT INTO Locations VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
       params = [
         id,
@@ -54,6 +54,7 @@ const add = (req, res) => {
           res.send("location add 완료");
         }
       });
+      // 위도, 경도 추가 완료.
     }
   });
 

@@ -14,14 +14,14 @@ const login = (req, res) => {
         res.status(500).send("서버 오류");
       } else {
         if (result[0].count > 0) {
-          res.status(400).send("이미 사용 중인 아이디입니다.");
+          res.status(40).send("이미 사용 중인 아이디입니다.");
         } else {
           let sql = "INSERT INTO users VALUES (?, ?)";
           let params = [user_id, psword];
           db.query(sql, params, (err, rows, fields) => {
             if (err) {
               console.error(err);
-              res.status(500).send("서버 오류");
+              res.status(500).send("서버 0오류");
             } else {
               res.send("회원가입이 완료되었습니다."); // 성공 응답 전송
             }

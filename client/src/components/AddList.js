@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './AddList.css';
-import ImageButton from './ImageButton';
-import backImg from '../img/back.png';
-import { Link, useLocation } from 'react-router-dom';
-import Addimg from '../img/add.png';
-import { IoIosAddCircleOutline } from 'react-icons/io';
-import axios from 'axios';
+import { useLocation } from 'react-router-dom';
+import TrailList from './TrailList';
 
 function AddList() {
   const location = useLocation();
@@ -13,7 +9,6 @@ function AddList() {
   const user_id = searchParams.get('user_id');
 
   let locationTemp = [];
-  const [locations, SetLocations] = useState([]);
 
   useEffect(() => {
     /// 아래는 Map
@@ -251,91 +246,19 @@ function AddList() {
     }
   });
 
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    addLocations({})
-      .then((response) => {
-        const url = `/Add?user_id=${user_id}`;
-
-        window.location.href = url;
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
-  const addLocations = () => {
-    const url = '/Add';
-    const formData = new FormData();
-
-    formData.append('user_id', user_id);
-    formData.append('locations', locations);
-    const config = {
-      headers: {
-        'content-type': 'multipart/from-data',
-      },
-    };
-
-    return axios.post(url, formData, config);
-  };
-  const SaveLocations = () => {
-    console.log(locationTemp);
-    SetLocations(locationTemp);
-  };
-
   return (
-    <form onSubmit={handleFormSubmit}>
-      <div style={{ flex: 1, display: 'flex', flexDirection: 'row' }}>
-        <div
-          id="map"
-          style={{
-            boxSizing: 'border-box',
-            padding: '0',
-            border: '0.5vh solid',
-            flex: 6,
-          }}
-        ></div>
-        <div className="AddListMain" style={{ flex: 4, boxSizing: 'border-box', padding: '0', border: '0.5vh solid' }}>
-          <div className="AddList">
-            <div className="ListName">산책로 추가 메뉴</div>
-            <div className="AddListButton1" style={{ marginTop: '1.5vh', marginRight: '1vh' }}>
-              <Link to={`/Main?user_id=${user_id}`}>
-                <ImageButton src={backImg} alt="AddListBackButton" width={'3vw'} height={'5vh'} />
-              </Link>
-            </div>
-          </div>
-          <hr />
-
-          <div className="AddListTextBox">
-            <div>
-              <input placeholder="산책로 이름" className="TrailNameText" type="text" />
-            </div>
-            <div>
-              <textarea className="FacilityNameText" placeholder="산책로 편의시설" />
-            </div>
-            <div>
-              <textarea className="GuestBookText" placeholder="후기를 적어주세요!" />
-            </div>
-          </div>
-          <hr />
-          <div className="AddListAdd">
-            <button
-              type="submit"
-              onClick={SaveLocations}
-              style={{
-                backgroundColor: 'rgba(157,211,168,1)',
-                display: 'flex',
-              }}
-              className="AddListAddButton"
-            >
-              <IoIosAddCircleOutline style={{ fontSize: '6vh', marginLeft: '4vh' }}></IoIosAddCircleOutline>
-              <span style={{ marginLeft: '7vh' }}>
-                <h1 style={{ lineHeight: '6vh' }}>산책로에 추가하기</h1>
-              </span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </form>
+    <div style={{ flex: 1, display: 'flex', flexDirection: 'row' }}>
+      <div
+        id="map"
+        style={{
+          boxSizing: 'border-box',
+          padding: '0',
+          border: '0.5vh solid',
+          flex: 6,
+        }}
+      ></div>
+      <TrailList locationTemp={locationTemp} />
+    </div>
   );
 }
 

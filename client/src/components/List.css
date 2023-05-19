@@ -1,30 +1,3 @@
-.item1, .item2, .item3, .item5
-{
-  margin-left: 2vh;
-  margin-top: 10vh;
-  display:flex;
-  align-items: center;
-}
-.item4
-{
-  margin-left: 1.5vh;
-  margin-top: 10vh;
-  display:flex;
-  align-items: center;
-}
-.l1img, .l2img, .l3img, .l5img
-{
-  width: 5vh;
-}
-.l5img
-{
-  width: 5vh;
-}
-.l4img
-{
-  width: 6vh;
-}
-
 .l1font, .l2font, .l3font, .l5font
 {
   margin-left:3.5vh;
@@ -43,4 +16,58 @@
   font-family: var(--font-NotoBold);
   font-size:4vh;
   text-align: center;
+}
+
+
+.item1Button, .item2Button, .item3Button, .item4Button
+{
+  margin-top: 8vh;
+  width:15vw;
+  height:10vh;
+  
+  text-align: left;
+  padding: 2vh;
+  border-radius: 2vh;
+  background-color: rgba(157,211,168,1);
+  filter:brightness(90%);
+  border: 3px solid;
+}
+.item1Image, .item2Image, .item3Image, .item4Image
+{
+  font-size:5vh;
+  vertical-align: middle;
+}
+.item1Span, .item2Span
+{
+  font-size:3vh;
+  margin-left: 2vh;
+  font-family: var(--font-NotoMedium);
+  vertical-align: middle;
+}
+.item3Span
+{
+  font-size:3vh;
+  margin-left: 1.65vw;
+  font-family: var(--font-NotoMedium);
+  vertical-align: middle;
+
+}
+.item4Span
+{
+  font-size:3vh;
+  margin-left: 2.5vw;
+  font-family: var(--font-NotoMedium);
+  vertical-align: middle;
+
+}
+.ListBorder
+{
+  border-width: 1vh;
+  border-color: black;
+  border:2px dashed;
+  margin-top: 1vh;
+}
+.List
+{
+  margin-top:1vh;
 }

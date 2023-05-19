@@ -2,6 +2,8 @@ import React from 'react';
 import Head from '../components/Head';
 import Map from '../components/Map';
 import AddList from '../components/AddList';
+import TrailList from '../components/TrailList';
+
 function Add() {
   return (
     <div

@@ -54,7 +54,8 @@ const TrailList = ({ locationTemp }) => {
   };
   return (
     <form onSubmit={handleFormSubmit}>
-      <div className="AddListMain" style={{ flex: 4, boxSizing: 'border-box', padding: '0', border: '0.5vh solid' }}>
+      <hr />
+      <div className="AddListMain" style={{ flex: 4, boxSizing: 'border-box', padding: '0' }}>
         <div className="AddList">
           <div className="ListName">산책로 추가 메뉴</div>
           <div className="AddListButton1" style={{ marginTop: '1.5vh', marginRight: '1vh' }}>

@@ -5,8 +5,8 @@
   background-color: white;
   height:10vh;
   text-align: center;
-  font-family: var(--font-NotoBlack);
-  font-size:2.5vw;
+
+
   line-height: 10vh;
 }
 
@@ -15,4 +15,10 @@
   margin-top: 1vh;
   margin-left: 1vh;
   width:8vh;
+}
+.HeadText
+{
+  font-family: var(--font-NotoBlack);
+  font-size: 2.5vw;
+  color: #84b233;
 }

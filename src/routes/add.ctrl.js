@@ -25,13 +25,13 @@ const add = (req, res) => {
 
   // 5가지의 location 분류 완료 상태
   // id 가져오기.
-  sql = "SELECT COUNT(*) AS count FROM Locations;";
+  sql = "SELECT MAX(id) AS max FROM Locations;";
   params = [];
   db.query(sql, params, (err, rows, fields) => {
     if (err) {
       console.log(err);
     } else {
-      location_id = rows[0].count + 1; // 예를들어 row가 4라면. 다음 id는 4+1 = 5
+      location_id = rows[0].max + 1; // 예를들어 row가 4라면. 다음 id는 4+1 = 5
       // location id 가져오기 완료
       // 위도 경도 추가 시작.
       sql = "INSERT INTO Locations VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -42,13 +42,13 @@ const add = (req, res) => {
           console.error(err);
           res.status(500).send("서버 오류");
         } else {
-          sql = "SELECT COUNT(*) AS count FROM Trails;";
+          sql = "SELECT MAX(id) AS max FROM Trails;";
           params = [];
           db.query(sql, params, (err, rows, fields) => {
             if (err) {
               console.log(err);
             } else {
-              trail_id = rows[0].count + 1;
+              trail_id = rows[0].max + 1;
               sql = "INSERT INTO Trails VALUES(?, ?, ?, ?, ?, ?);";
               params = [trail_id, user_id, location_id, trailName, reviewData, facilityData];
               db.query(sql, params, (err, rows, fields) => {

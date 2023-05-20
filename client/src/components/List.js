@@ -1,10 +1,5 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import inquiryImg from '../img/inquiry.png';
-import AddImg from '../img/add.png';
-import TrailImg from '../img/mytrail.png';
-import favImg from '../img/fav.png';
-import exitImg from '../img/exit.png';
 import { TbMapSearch } from 'react-icons/tb';
 import { IoIosAddCircleOutline } from 'react-icons/io';
 import { BsBookmarkStar } from 'react-icons/bs';
@@ -16,16 +11,8 @@ function List() {
   const user_id = searchParams.get('user_id');
 
   return (
-    <div
-      style={{
-        width: '100%',
-        height: '100%',
-        backgroundColor: 'rgba(157,211,168,1)',
-        textAlign: 'center',
-        border: '0.5vh solid',
-      }}
-      className="MainList"
-    >
+    <div className="MainList">
+      <hr />
       <div className="List">산책로 목록</div>
       <hr className="ListBorder" />
       <div className="item1">

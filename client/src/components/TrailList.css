@@ -20,10 +20,12 @@
 
 
 
+
 .AddList
 {
    display: flex;
    flex-direction: row;
+   background-color: white;
 }
 .ListName
 {
@@ -32,21 +34,18 @@
     font-size: 4vh;
     line-height: 8vh;
     width:'32vw';
-    height:'8vh';
-    background-color: rgba(157,211,168,1);
+    height:'8vh';   
+    background-color:white;
     text-align: center;
     flex:1;
     flex-direction: row;
     
 }
-.AddListBox{
-    background-color: black;
-    width: 40vw;
-}
+
 
 .AddListMain
 {
-    background-color : rgba(157,211,168,1);
+    background-color : white;
     width : 40vw;
     height: 100vh;
 }
@@ -60,8 +59,8 @@
     height: 60vh;
     background-color: rgba(157,211,168,1);
     border-radius: 2vh;
-    filter:brightness(90%);
-    border: 3px solid;
+    filter:brightness(100%);
+    border: 2px solid;
 }
 
 .TrailNameText
@@ -140,8 +139,8 @@
     margin-top:2.5vh;
     margin-left:5vw;
     border-radius: 2vh;
-    filter:brightness(90%);
-    border:3px solid;
+    filter:brightness(100%);
+    border:2px solid;
 }
 .AddListAddButton:focus
 {

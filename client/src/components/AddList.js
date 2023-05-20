@@ -253,7 +253,6 @@ function AddList() {
         style={{
           boxSizing: 'border-box',
           padding: '0',
-          border: '0.5vh solid',
           flex: 6,
         }}
       ></div>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Head from '../components/Head';
 import Map from '../components/Map';
@@ -7,6 +7,11 @@ import '../components/Head.css';
 import '../components/List.css';
 
 function Main() {
+  const [locations, setLocations] = useState([]);
+
+  const setLocationsUpdate = (newLocations) => {
+    setLocations(newLocations);
+  };
   return (
     <div
       style={{
@@ -21,10 +26,10 @@ function Main() {
       </div>
       <div style={{ flex: 1, display: 'flex' }}>
         <div style={{ flex: 8 }}>
-          <Map />
+          <Map locations={locations} />
         </div>
         <div style={{ flex: 2 }}>
-          <List />
+          <List UpdateLocations={setLocationsUpdate} />
         </div>
       </div>
     </div>

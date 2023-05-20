@@ -21,7 +21,7 @@ const login = (req, res) => {
           db.query(sql, params, (err, rows, fields) => {
             if (err) {
               console.error(err);
-              res.status(500).send("서버 0오류");
+              res.status(500).send("서버 오류");
             } else {
               res.send("회원가입이 완료되었습니다."); // 성공 응답 전송
             }

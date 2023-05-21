@@ -17,7 +17,7 @@ function List({ UpdateLocations }) {
     addLocationId({})
       .then((response) => {
         UpdateLocations(response.data);
-        window.location.href = url;
+        //window.location.href = url;
       })
       .catch((error) => {
         console.log(error);

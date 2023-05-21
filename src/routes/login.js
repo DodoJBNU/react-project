@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 const upload = multer({ dest: "./upload" });
 
-const login_ctrl = require("./login.ctrl");
+const login_ctrl = require("../ctrl/login.ctrl");
 
 router.post("/", upload.none(), login_ctrl.login);
 

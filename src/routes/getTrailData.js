@@ -3,8 +3,8 @@ const express = require("express");
 const router = express.Router();
 const upload = multer({ dest: "./upload" });
 
-const add_ctrl = require("../ctrl/add.ctrl");
+const getTrailData_ctrl = require("../ctrl/getTrailData.ctrl");
 
-router.post("/", upload.none(), add_ctrl.add);
+router.post("/", upload.none(), getTrailData_ctrl.getTrailData);
 
 module.exports = router;

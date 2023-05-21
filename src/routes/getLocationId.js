@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 const upload = multer({ dest: "./upload" });
 
-const get_ctrl = require("./get.ctrl");
+const get_ctrl = require("../ctrl/getLocationId.ctrl");
 
 router.post("/", upload.none(), get_ctrl.getLocationId);
 

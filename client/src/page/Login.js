@@ -15,10 +15,7 @@ function Login() {
 
   return (
     <div>
-      <div
-        id="container"
-        className={`container ${isSignIn ? 'sign-in' : 'sign-up'}`}
-      >
+      <div id="container" className={`container ${isSignIn ? 'sign-in' : 'sign-up'}`}>
         {/* FORM SECTION */}
         <div className="row">
           {/* SIGN UP */}

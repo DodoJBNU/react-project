@@ -13,22 +13,18 @@ function Main() {
     setLocations(newLocations);
   };
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        height: '100vh',
-        width: '100vw',
-      }}
-    >
-      <div style={{ width: '100vw' }}>
-        <Head />
-      </div>
-      <div style={{ flex: 1, display: 'flex' }}>
-        <div style={{ flex: 8 }}>
+    <div style={{ display: 'flex', flexDirection: 'row', height: '100vh', width: '100vw', flex: 1 }}>
+      <div style={{ flex: 8 }}>
+        <div style={{ width: '70vw', height: '90vh', marginLeft: '5vw', marginTop: '5vh' }}>
           <Map locations={locations} />
         </div>
-        <div style={{ flex: 2 }}>
+      </div>
+
+      <div style={{ flex: 2 }}>
+        <div>
+          <Head />
+        </div>
+        <div>
           <List UpdateLocations={setLocationsUpdate} />
         </div>
       </div>

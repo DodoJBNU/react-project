@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import Head from '../components/Head';
 import axios from 'axios';
+import LocationMap from '../components/LocationMap';
+import './Trail.css';
+
 function Trail() {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
@@ -9,7 +12,10 @@ function Trail() {
   const trail_id = searchParams.get('trail_id');
 
   const [Trails, setTrails] = useState([]);
-  // [id, user_id, location_id, title, review, facilities] 형태로 저장.
+  // [id, user_id, location_id, title, review, facilities]
+  // [Latlocation1,Lnglocation1,Latlocation2,Lnglocation2,Latlocation3,Lnglocation3,Latlocation4,Lnglocation4,Latlocation5,Lnglocation5]
+  // 이 두 배열을 [[Trail, location]] 과 같은 형태로 저장해두었음.
+
   const url = `/Trail?user_id=${user_id}&trail_id=${trail_id}`;
 
   const getTrailData = () => {
@@ -34,15 +40,14 @@ function Trail() {
   }, []);
   return (
     <form>
-      <div>
-        <div>
+      <div className="Main">
+        <div className="Left">
           <Head />
+          <div className="Map">
+            <LocationMap className="LocationMap" />
+          </div>
         </div>
-        <div>
-          Trail Page; user_id: {user_id} , trail_id : {trail_id}
-        </div>
-        <div>Trails : {Trails[0]}</div>
-        <div>Locations: {Trails[1]}</div>
+        <div className="Right">hi</div>
       </div>
     </form>
   );

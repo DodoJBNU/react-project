@@ -4,6 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 import ImageButton from './ImageButton';
 import backImg from '../img/back.png';
 import { IoIosAddCircleOutline } from 'react-icons/io';
+import { IoMdArrowRoundBack } from 'react-icons/io';
 import axios from 'axios';
 
 // Map의 오른쪽에 위치할 산책로 리스트임.
@@ -54,17 +55,18 @@ const TrailList = ({ locationTemp }) => {
   };
   return (
     <form onSubmit={handleFormSubmit}>
-      <hr />
-      <div className="AddListMain" style={{ flex: 4, boxSizing: 'border-box', padding: '0' }}>
+      <div className="AddListMain" style={{ boxSizing: 'border-box', padding: '0' }}>
         <div className="AddList">
-          <div className="ListName">산책로 추가 메뉴</div>
-          <div className="AddListButton1" style={{ marginTop: '1.5vh', marginRight: '1vh' }}>
-            <Link to={`/Main?user_id=${user_id}`}>
-              <ImageButton src={backImg} alt="AddListBackButton" width={'3vw'} height={'5vh'} />
-            </Link>
+          <div className="ListName">
+            <div className="AddListButton1" style={{ marginTop: '1.5vh', marginRight: '1vh' }}>
+              <Link to={`/Main?user_id=${user_id}`}>
+                <IoMdArrowRoundBack className="backimg" />
+              </Link>
+            </div>
+            <span className="AddListText">산책로 추가 메뉴</span>
           </div>
         </div>
-        <hr />
+
         <div className="AddListTextBox">
           <div>
             <input
@@ -101,23 +103,22 @@ const TrailList = ({ locationTemp }) => {
               }}
             />
           </div>
-        </div>
-        <hr />
-        <div className="AddListAdd">
-          <button
-            type="submit"
-            onClick={SaveLocations}
-            style={{
-              backgroundColor: 'rgba(157,211,168,1)',
-              display: 'flex',
-            }}
-            className="AddListAddButton"
-          >
-            <IoIosAddCircleOutline style={{ fontSize: '6vh', marginLeft: '4vh' }}></IoIosAddCircleOutline>
-            <span style={{ marginLeft: '7vh' }}>
-              <h1 style={{ lineHeight: '6vh' }}>산책로에 추가하기</h1>
-            </span>
-          </button>
+
+          <div className="AddListAdd">
+            <button
+              type="submit"
+              onClick={SaveLocations}
+              style={{
+                display: 'flex',
+              }}
+              className="AddListAddButton"
+            >
+              <IoIosAddCircleOutline className="img2"></IoIosAddCircleOutline>
+              <span style={{ marginLeft: '1vh' }}>
+                <h1 className="addText">추가하기</h1>
+              </span>
+            </button>
+          </div>
         </div>
       </div>
     </form>

@@ -33,9 +33,7 @@ function List({ UpdateLocations }) {
   return (
     <form onSubmit={handleFormSubmit}>
       <div className="MainList">
-        <hr />
         <div className="List">산책로 목록</div>
-        <hr className="ListBorder" />
         <div className="item1">
           <button className="item1Button" type="submit">
             <TbMapSearch className="item1Image" />

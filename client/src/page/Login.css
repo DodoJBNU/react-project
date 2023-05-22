@@ -233,7 +233,7 @@ body {
 .img.sign-in img {
     margin-top: 1vh;
     margin-right: 4vw;
-    transform: translateX(-550%);
+    transform: translateX(-650%);
 }
 
 .text.sign-up h2,
@@ -241,7 +241,7 @@ body {
 .img.sign-up img {
     margin-top: 1vh;
     margin-left: 4vw;
-    transform: translateX(550%);
+    transform: translateX(650%);
 }
 
 

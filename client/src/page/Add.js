@@ -14,9 +14,6 @@ function Add() {
         width: '100vw',
       }}
     >
-      <div style={{ width: '100vw', height: '10vh' }}>
-        <Head />
-      </div>
       <div>
         <AddList />
       </div>

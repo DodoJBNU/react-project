@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './AddList.css';
 import { useLocation } from 'react-router-dom';
 import TrailList from './TrailList';
-
+import Head from './Head';
 function AddList() {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
@@ -248,15 +248,28 @@ function AddList() {
 
   return (
     <div style={{ flex: 1, display: 'flex', flexDirection: 'row' }}>
-      <div
-        id="map"
-        style={{
-          boxSizing: 'border-box',
-          padding: '0',
-          flex: 6,
-        }}
-      ></div>
-      <TrailList locationTemp={locationTemp} />
+      <div style={{ flex: 6.5 }}>
+        <div
+          id="map"
+          style={{
+            boxSizing: 'border-box',
+            padding: '0',
+            marginTop: '5vh',
+            height: '90vh',
+            marginLeft: '4vw',
+            width: '55vw',
+          }}
+        ></div>
+      </div>
+
+      <div style={{ flex: 3.5 }}>
+        <div style={{ marginLeft: '18vw' }}>
+          <Head />
+        </div>
+        <div>
+          <TrailList locationTemp={locationTemp} />
+        </div>
+      </div>
     </div>
   );
 }

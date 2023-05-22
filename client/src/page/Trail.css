@@ -1,0 +1,17 @@
+.Main
+{
+    display: flex;
+    flex-direction: row;
+}
+.Left
+{
+    flex: 55%;
+}
+.Right
+{
+    flex: 45%;
+}
+.Map
+{
+    height: 90vh;
+}

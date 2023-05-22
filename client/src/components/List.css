@@ -13,9 +13,15 @@
 
 .List
 {
+
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  
   font-family: var(--font-NotoBlack);
   font-size:4vh;
   text-align: center;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
   color: black;
 }
 
@@ -23,41 +29,47 @@
 .item1Button, .item2Button, .item3Button, .item4Button
 {
   margin-top: 8vh;
-  width:15vw;
-  height:10vh;
+
+  width:16vw;
+  height:8vh;
   
-  text-align: left;
+  text-align: center;
   padding: 2vh;
   border-radius: 2vh;
-  background-color: rgba(157,211,168,1);
-  filter:brightness(100%);
-  border: 1x solid;
-  opacity: 0.9;
+
+  background-color: #98cd3b;
+  filter:brightness(108%);
+  border: 2px solid;
+   
+  border-color: #84b233;
 }
 .item1Image, .item2Image, .item3Image, .item4Image
 {
-  font-size:5vh;
+  font-size:4vh;
   vertical-align: middle;
 }
 .item1Span, .item2Span
 {
-  font-size:3vh;
+  font-size:2.5vh;
   margin-left: 2vh;
+  margin-right: 2vh;
   font-family: var(--font-NotoMedium);
   vertical-align: middle;
 }
 .item3Span
 {
-  font-size:3vh;
-  margin-left: 1.65vw;
+  font-size:2.5vh;
+  margin-left: 2vh;
+  margin-right:2vh;
   font-family: var(--font-NotoMedium);
   vertical-align: middle;
 
 }
 .item4Span
 {
-  font-size:3vh;
-  margin-left: 2.5vw;
+  margin-left:1.5vh;
+  margin-right:1.5vh;
+  font-size:2.5vh;
   font-family: var(--font-NotoMedium);
   vertical-align: middle;
 
@@ -73,9 +85,12 @@
 
 .MainList
 {
-  width: 100%;
-  height: 100%;
+  width:18vw;
+  margin-right: 6vh;
   background-color: white;
-  filter: brightness(100%);
   text-align: center;
 } 
+.item1
+{
+  margin-top: 2vh;
+}

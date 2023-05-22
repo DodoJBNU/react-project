@@ -14,7 +14,7 @@
 .List
 {
 
-  padding-top: 1vh;
+  padding-top: 0.5vh;
   padding-bottom: 1vh;
   
   font-family: var(--font-NotoBlack);
@@ -42,6 +42,7 @@
   border: 2px solid;
    
   border-color: #84b233;
+  cursor: pointer;
 }
 .item1Image, .item2Image, .item3Image, .item4Image
 {

@@ -54,7 +54,8 @@
     font-family: var(--font-NotoBlack);
     font-size: 4vh;
     line-height: 8vh;  
-    margin-left:7.5vw;   
+    margin-left:8vw;   
+    color: black;
 }
 
 .AddListMain
@@ -161,12 +162,13 @@
     border-color: #84b233;
     background-color: #98cd3b;
     filter:brightness(100%);
+    cursor: pointer;
 }
 .AddListAddButton:focus
 {
     outline-color: transparent;
     outline-style:solid;
-    box-shadow: 0 0 0 4px #5a01a7;
+    box-shadow: 0 0 0 2px #5a01a7;
 }
 .img2
 {
@@ -177,8 +179,9 @@
 }
 .addText
 {
+    margin-left: 0.6vh;
     font-size: 1.8vh;
-    line-height: 4.4vh;
+    line-height: 4vh;
     color: white;
 
 }

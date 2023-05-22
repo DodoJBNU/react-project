@@ -5,13 +5,187 @@
 }
 .Left
 {
-    flex: 55%;
+    flex: 60%;
 }
 .Right
 {
-    flex: 45%;
+    flex: 40%;
 }
 .Map
 {
     height: 90vh;
+}
+.Map
+{
+    width:50vw;
+    height:90vh;
+    margin-left: 5vw;
+    margin-top : 5vh;
+}
+.head
+{
+    margin-left: 18vw;
+}
+.TrailDataBox
+{
+    width:35vw;
+    height: 80vh;
+    background-color: white;
+    border: 1px solid;
+    border-radius: 3px;
+    border-color: #84b233;
+    
+}
+.DataBoxHead
+{
+    height:10vh;
+    text-align: center;
+    vertical-align: center;
+    border-bottom: 1px solid;
+    border-color: gray;
+    overflow:auto;
+    word-break:break-all;   
+}
+.DataBoxHeadText
+{
+    font-family: var(--font-NotoBlack);
+    color: black;
+    font-size: 4vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:29vw;
+    background-color: white;
+    
+}
+.DataBoxBackButton
+{   
+    font-size: 5vh;
+    color: #84b233;
+}
+.DataBoxButtonSpace
+{
+    margin-left: 1vh;
+    width:3vw;
+    height: 9.9vh;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+
+}
+.TrailReview
+{
+    width:34.9vw;
+    height:30vh;
+    background-color: white;
+    padding: 1vw;
+    font-size: 2vh;
+    font-family: var(--font-NotoMedium);
+    border-bottom: 1px solid;
+    border-color: gray;
+    word-break:break-all;
+    overflow:auto;
+}
+
+.TrailFacilities
+{
+    width:34.9vw;
+    height: 15vh;
+    background-color: white;
+    padding:1vw;
+    border-bottom: 1px solid;
+    border-color: gray;
+    word-break:break-all;
+    overflow:auto;
+}
+
+.TrailFacilitiesHead
+{
+    width:32.9vw;
+    height:4vh;
+    background-color: white;
+    text-align: left;
+    font-family: var(--font-NotoBlack);
+}
+.TrailFacilitiesBody
+{
+    font-family: var(--font-NotoMedium);
+    font-size:2vh;
+}
+.CommentBox
+{
+    width:34.9vw;
+    height:24.8vh;
+    background-color: white;
+
+}
+.ShowComments
+{
+    width: 34.9vw;
+    height: 18vh;
+    background-color: white ;
+    padding:1vw;
+    border-bottom: 1px solid;
+    border-color: gray;
+}
+.ShowCommentsHead
+{
+    font-family: var(--font-NotoBlack);
+    font-size:2vh;
+}
+.AddComment
+{
+    display: flex;
+    flex-direction: row;
+    padding:1.25vh;
+    width: 34.9vw;
+    height:6.8vh;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.AddCommentTextBox
+{
+    margin-left: 1vh;
+    border-radius: 1vh;
+    height:4vh;
+    width: 35vw;
+    background-color: white;
+    padding:1vh;
+    font-family: var(--font-NotoBold);
+}
+.AddCommentButtonBox
+{
+    width: 4vw;
+    margin-left: 1vw;
+    background-color: white;
+}
+.CommentButtonImg
+{
+    font-size: 2vw;
+    color: #84b233;
+}
+.AddCommentButton
+{
+    margin-left:1vh;
+    background-color: white;
+    border:none;
+    cursor: pointer;
+}
+
+.UserImg
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 4vw;
+    height: 4vh;
+    background-color: white;
+}
+.UserImgFile
+{
+    font-size: 4vh;
+    color: #84b233;
 }

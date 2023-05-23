@@ -1,9 +1,11 @@
 .user_comment
 {
+    width:33.5vw;
+    padding-left:2vh;
+    padding-top:1vh;
     border-top: 1px solid;
-    border-bottom: 1px solid;
-    border-color: gray;
-    width:30vw;
+    border-color: #84b233;
+    word-break: break-all;
 }
 .Comment_id
 {

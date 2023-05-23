@@ -79,6 +79,7 @@ function Trail() {
             <div className="head">
               <Head />
             </div>
+
             <div className="TrailDataListMain">
               <div className="TrailDataBox">
                 <div className="DataBoxHead">
@@ -91,37 +92,38 @@ function Trail() {
                     <span className="DataBoxHeadText">{Trails[0][3].length != 0 ? Trails[0][3] : '산책로 이름이 없습니다.'}</span>
                   </div>
                 </div>
-                <div className="TrailReview">{Trails[0][4].length != 0 ? Trails[0][4] : '사용자 후기가 존재하지 않습니다.'}</div>
-                <div className="TrailFacilities">
-                  <div className="TrailFacilitiesHead">편의시설</div>
-                  <div className="TrailFacilitiesBody">{Trails[0][5].length != 0 ? Trails[0][5] : '편의시설 정보가 존재하지 않습니다.'}</div>
-                </div>
-                <div className="CommentBox">
-                  <div className="ShowComments">
-                    <div className="ShowCommentsHead">댓글</div>
-                    <div className="ShowCommentsBody">
-                      <CommentList comments={Trails[2]} />
+                <div className="ScrollBox">
+                  <div className="TrailReview">{Trails[0][4].length != 0 ? Trails[0][4] : '사용자 후기가 존재하지 않습니다.'}</div>
+                  <div className="TrailFacilities">
+                    <div className="TrailFacilitiesHead">편의시설</div>
+                    <div className="TrailFacilitiesBody">{Trails[0][5].length != 0 ? Trails[0][5] : '편의시설 정보가 존재하지 않습니다.'}</div>
+                  </div>
+                  <div className="CommentBox">
+                    <div className="ShowComments">
+                      <div className="ShowCommentsBody">
+                        <CommentList comments={Trails[2]} />
+                      </div>
                     </div>
                   </div>
-                  <div className="AddComment">
-                    <div className="UserImg">
-                      <AiOutlineUser className="UserImgFile" />
-                    </div>
-                    <input
-                      className="AddCommentTextBox"
-                      type="text"
-                      placeholder="댓글을 남겨주세요!"
-                      name="CommentText"
-                      value={comment}
-                      onChange={(e) => {
-                        setComment(e.target.value);
-                      }}
-                    />
-                    <div className="AddCommentButtonBox">
-                      <button className="AddCommentButton" type="submit">
-                        <RiMailAddLine className="CommentButtonImg" />
-                      </button>
-                    </div>
+                </div>
+                <div className="AddComment">
+                  <div className="UserImg">
+                    <AiOutlineUser className="UserImgFile" />
+                  </div>
+                  <input
+                    className="AddCommentTextBox"
+                    type="text"
+                    placeholder="댓글을 남겨주세요!"
+                    name="CommentText"
+                    value={comment}
+                    onChange={(e) => {
+                      setComment(e.target.value);
+                    }}
+                  />
+                  <div className="AddCommentButtonBox">
+                    <button className="AddCommentButton" type="submit">
+                      <RiMailAddLine className="CommentButtonImg" />
+                    </button>
                   </div>
                 </div>
               </div>

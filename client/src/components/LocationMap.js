@@ -115,54 +115,55 @@ function LocationMap({ TrailData }) {
       // 총 거리 표시
       const totalDistance = lineDistances.reduce((acc, cur) => acc + cur, 0);
 
-      const walkTime = Math.floor(totalDistance / 67); // In minutes
+      if (totalDistance > 0) {
+        const walkTime = Math.floor(totalDistance / 67); // In minutes
 
-      let walkHour = '';
-      let walkMin = '';
+        let walkHour = '';
+        let walkMin = '';
 
-      // Convert walking time to hours and minutes if it exceeds 60 minutes
-      if (walkTime >= 60) {
-        walkHour = Math.floor(walkTime / 60) + '시간 ';
+        // Convert walking time to hours and minutes if it exceeds 60 minutes
+        if (walkTime >= 60) {
+          walkHour = Math.floor(walkTime / 60) + '시간 ';
+        }
+        walkMin = (walkTime % 60) + '분';
+
+        // Calculate cycling time
+        const bikeTime = Math.floor(totalDistance / 227); // In minutes
+
+        let bikeHour = '';
+        let bikeMin = '';
+
+        // Convert cycling time to hours and minutes if it exceeds 60 minutes
+        if (bikeTime >= 60) {
+          bikeHour = Math.floor(bikeTime / 60) + '시간 ';
+        }
+        bikeMin = (bikeTime % 60) + '분';
+
+        var content = '<ul class="dotOverlay distanceInfo">';
+        content += '  <li>';
+        content += '    <span class="label">총거리</span>';
+        content += '    <span class="number">' + totalDistance + '</span>m';
+        content += '  </li>';
+        content += '  <li>';
+        content += '    <span class="label">도보</span>';
+        content += '    <span class="number">' + walkHour + walkMin + '</span>';
+        content += '  </li>';
+        content += '  <li>';
+        content += '    <span class="label">자전거</span>';
+        content += '    <span class="number">' + bikeHour + bikeMin + '</span>';
+        content += '  </li>';
+        content += '</ul>';
+
+        const totalDistanceOverlay = new kakao.maps.CustomOverlay({
+          content: content,
+          position: linePath[linePath.length - 1],
+          xAnchor: 0,
+          yAnchor: 1.2,
+          zIndex: 3,
+        });
+        totalDistanceOverlay.setMap(map);
       }
-      walkMin = (walkTime % 60) + '분';
-
-      // Calculate cycling time
-      const bikeTime = Math.floor(totalDistance / 227); // In minutes
-
-      let bikeHour = '';
-      let bikeMin = '';
-
-      // Convert cycling time to hours and minutes if it exceeds 60 minutes
-      if (bikeTime >= 60) {
-        bikeHour = Math.floor(bikeTime / 60) + '시간 ';
-      }
-      bikeMin = (bikeTime % 60) + '분';
-
-      var content = '<ul class="dotOverlay distanceInfo">';
-      content += '  <li>';
-      content += '    <span class="label">총거리</span>';
-      content += '    <span class="number">' + totalDistance + '</span>m';
-      content += '  </li>';
-      content += '  <li>';
-      content += '    <span class="label">도보</span>';
-      content += '    <span class="number">' + walkHour + walkMin + '</span>';
-      content += '  </li>';
-      content += '  <li>';
-      content += '    <span class="label">자전거</span>';
-      content += '    <span class="number">' + bikeHour + bikeMin + '</span>';
-      content += '  </li>';
-      content += '</ul>';
-
-      const totalDistanceOverlay = new kakao.maps.CustomOverlay({
-        content: content,
-        position: linePath[linePath.length - 1],
-        xAnchor: 0,
-        yAnchor: 1.2,
-        zIndex: 3,
-      });
-      totalDistanceOverlay.setMap(map);
     };
-
     drawPathAndDots();
   }, [TrailData]);
   return (

@@ -29,11 +29,12 @@
 .TrailDataBox
 {
     width:35vw;
-    height: 80vh;
+    height: 80  vh;
     background-color: white;
     border: 1px solid;
     border-radius: 3px;
     border-color: #84b233;
+
     
 }
 .DataBoxHead
@@ -42,8 +43,7 @@
     text-align: center;
     vertical-align: center;
     border-bottom: 1px solid;
-    border-color: gray;
-    overflow:auto;
+    border-color: #84b233;
     word-break:break-all;   
 }
 .DataBoxHeadText
@@ -77,15 +77,14 @@
 .TrailReview
 {
     width:34.9vw;
-    height:30vh;
+    height:28vh;
     background-color: white;
     padding: 1vw;
     font-size: 2vh;
     font-family: var(--font-NotoMedium);
-    border-bottom: 1px solid;
-    border-color: gray;
+    border-color: #84b233;
     word-break:break-all;
-    overflow:auto;
+    overflow: auto;
 }
 
 .TrailFacilities
@@ -94,10 +93,9 @@
     height: 15vh;
     background-color: white;
     padding:1vw;
-    border-bottom: 1px solid;
-    border-color: gray;
     word-break:break-all;
-    overflow:auto;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .TrailFacilitiesHead
@@ -116,18 +114,13 @@
 .CommentBox
 {
     width:34.9vw;
-    height:24.8vh;
-    background-color: white;
-
 }
 .ShowComments
 {
     width: 34.9vw;
     height: 18vh;
-    background-color: white ;
-    padding:1vw;
-    border-bottom: 1px solid;
-    border-color: gray;
+    background-color: white;
+    word-break:break-all;
 }
 .ShowCommentsHead
 {
@@ -140,12 +133,13 @@
     margin-top:1vh;
     height:11.9vh;
     background-color: white;
-    word-break:break-all;
-    overflow:auto;
 
 }
 .AddComment
 {
+    margin-top:1vh;
+    border-top: 1px solid;
+    border-color: #84b233;;
     display: flex;
     flex-direction: row;
     padding:1.25vh;
@@ -158,6 +152,7 @@
 }
 .AddCommentTextBox
 {
+
     margin-left: 1vh;
     border-radius: 1vh;
     height:4vh;
@@ -165,12 +160,14 @@
     background-color: white;
     padding:1vh;
     font-family: var(--font-NotoBold);
+    
 }
 .AddCommentButtonBox
 {
     width: 4vw;
     margin-left: 1vw;
     background-color: white;
+    
 }
 .CommentButtonImg
 {
@@ -199,3 +196,11 @@
     font-size: 4vh;
     color: #84b233;
 }
+
+.ScrollBox
+{
+    
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+

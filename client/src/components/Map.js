@@ -22,26 +22,35 @@ function Map({ locations }) {
 
     for (let i = 0; i < locations.length; i++) {
       positions.push({
-        id: locations[i][0], // 나중에 title 수정하기. 현재는 trail_id
+        id: locations[i][3], // 나중에 title 수정하기. 현재는 trail_id
         title: '',
         latlng: new kakao.maps.LatLng(locations[i][1], locations[i][2]),
       });
     }
-    //let imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png';
+
+    //let imageSrc = 'https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678111-map-marker-512.png';
 
     for (var i = 0; i < positions.length; i++) {
       // 마커 이미지의 이미지 크기 입니다
-      var imageSize = new kakao.maps.Size(24, 35);
+      var imageSize = new kakao.maps.Size(35, 35);
 
       // 마커 이미지를 생성합니다
       //let markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+
+      let imageIndex = i >= 63 ? i - 63 : null;
+
+      let markerImage = null;
+      if (imageIndex !== null) {
+        let imageSrc = 'https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678111-map-marker-512.png';
+        markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+      }
 
       // 마커를 생성합니다
       let marker = new kakao.maps.Marker({
         map: map, // 마커를 표시할 지도
         position: positions[i].latlng, // 마커를 표시할 위치
         title: positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-        //  image: markerImage, // 마커 이미지
+        image: markerImage, // 마커 이미지
         id: positions[i].id,
         clickable: true, // 마커를 클릭했을 때 지도의 클릭 이벤트가 발생하지 않도록 설정합니다
       });

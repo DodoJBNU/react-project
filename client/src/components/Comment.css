@@ -1,0 +1,33 @@
+.user_comment
+{
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    border-color: gray;
+    width:30vw;
+}
+.Comment_id
+{
+    display:flex;
+    flex-direction: row;
+    height: 5vh;
+    align-items: center;
+    justify-content: left;
+    background-color: white;
+}
+.Comment_user-id
+{
+    margin-left: 1vh;
+    font-family: var(--font-NotoBold);
+}
+.Comment_Id_UserImage
+{
+    font-size: 4vh;
+}
+.Comment_comment
+{
+    font-family: var(--font-NotoMedium);
+}
+.Comment_Body
+{
+    padding : 1vh;
+}

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { KakaoMap } from 'react-kakao-maps';
 import { useLocation } from 'react-router-dom';
 import Trail from '../page/Trail';
+import markerimg from '../img/Headimg.png';
+
 function Map({ locations }) {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
@@ -25,21 +27,21 @@ function Map({ locations }) {
         latlng: new kakao.maps.LatLng(locations[i][1], locations[i][2]),
       });
     }
-    let imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png';
+    //let imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png';
 
     for (var i = 0; i < positions.length; i++) {
       // 마커 이미지의 이미지 크기 입니다
       var imageSize = new kakao.maps.Size(24, 35);
 
       // 마커 이미지를 생성합니다
-      let markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+      //let markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
 
       // 마커를 생성합니다
       let marker = new kakao.maps.Marker({
         map: map, // 마커를 표시할 지도
         position: positions[i].latlng, // 마커를 표시할 위치
         title: positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-        image: markerImage, // 마커 이미지
+        //  image: markerImage, // 마커 이미지
         id: positions[i].id,
         clickable: true, // 마커를 클릭했을 때 지도의 클릭 이벤트가 발생하지 않도록 설정합니다
       });

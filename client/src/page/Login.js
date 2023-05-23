@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Login.css';
 import { Link } from 'react-router-dom';
-import TrailImage from '../img/Headimg.png';
+import TrailImages from '../img/Headimg.png';
 import UsersAdd from '../components/UsersAdd';
 import UsersLogin from '../components/UsersLogin';
 
@@ -61,7 +61,7 @@ function Login() {
           <div className="col align-items-center flex-col">
             <div className="text sign-in" style={{ display: 'flex' }}>
               <div className="img sign-in">
-                <img className="sign-inImage" alt="loginimg" src={TrailImage} />
+                <img alt="loginimg" src={TrailImages} />
               </div>
               <h2 style={{ marginRight: '12vw' }}>마이 산책로</h2>
             </div>
@@ -72,7 +72,7 @@ function Login() {
             <div className="text sign-up" style={{ display: 'flex' }}>
               <h2 style={{ marginLeft: '12vw' }}>마이 산책로</h2>
               <div className="img sign-up">
-                <img className="LoginImage" alt="loginimg" src={TrailImage} />
+                <img alt="loginimg" src={TrailImages} />
               </div>
             </div>
           </div>

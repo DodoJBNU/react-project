@@ -8,7 +8,7 @@ function AddList() {
   const searchParams = new URLSearchParams(location.search);
   const user_id = searchParams.get('user_id');
 
-  let locationTemp = [];
+  const [locationTemp, setLocationTemp] = useState([]);
 
   useEffect(() => {
     /// 아래는 Map
@@ -68,8 +68,8 @@ function AddList() {
 
         displayCircleDot(clickPosition, 0);
       } else {
-        if (locationTemp.length === 0) locationTemp[locationTemp.length] = clickLine.getPath();
-        locationTemp[locationTemp.length] = clickPosition;
+        setLocationTemp([...locationTemp, clickLine.getPath(), clickPosition]);
+
         var path = clickLine.getPath();
         path.push(clickPosition);
         clickLine.setPath(path);
@@ -122,9 +122,9 @@ function AddList() {
     function deleteClickLine() {
       // 그려진 선이 있다면 초기화.
       if (clickLine) {
+        setLocationTemp([]);
         clickLine.setMap(null);
         clickLine = null;
-        locationTemp = [];
       }
     }
 
@@ -244,7 +244,7 @@ function AddList() {
 
       return content;
     }
-  });
+  }, []);
 
   return (
     <div style={{ flex: 1, display: 'flex', flexDirection: 'row' }}>

@@ -7,7 +7,24 @@ function LocationMap({ TrailData }) {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const user_id = searchParams.get('user_id');
-  const url = `/Main?user_id=${user_id}`;
+  const url = `/Trail?user_id=${user_id}`;
+
+  const calculateDistance = (start, end) => {
+    const lat1 = start.getLat();
+    const lng1 = start.getLng();
+    const lat2 = end.getLat();
+    const lng2 = end.getLng();
+
+    const R = 6371; // 지구의 반지름 (단위: km)
+    const dLat = ((lat2 - lat1) * Math.PI) / 180;
+    const dLon = ((lng2 - lng1) * Math.PI) / 180;
+    const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos((lat1 * Math.PI) / 180) * Math.cos((lat2 * Math.PI) / 180) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    const distance = R * c * 1000; // 단위를 미터로 변환
+
+    // 반올림 해주자.
+    return parseInt(distance);
+  };
 
   useEffect(() => {
     const container = document.getElementById('map');
@@ -21,21 +38,13 @@ function LocationMap({ TrailData }) {
     // 경로를 그리고 도트를 표시하는 함수
     const drawPathAndDots = () => {
       const linePath = [];
-
-      if (TrailData[1][0] && TrailData[1][1]) {
-        linePath.push(new kakao.maps.LatLng(TrailData[1][0], TrailData[1][1]));
-      }
-      if (TrailData[1][2] && TrailData[1][3]) {
-        linePath.push(new kakao.maps.LatLng(TrailData[1][2], TrailData[1][3]));
-      }
-      if (TrailData[1][4] && TrailData[1][5]) {
-        linePath.push(new kakao.maps.LatLng(TrailData[1][4], TrailData[1][5]));
-      }
-      if (TrailData[1][6] && TrailData[1][7]) {
-        linePath.push(new kakao.maps.LatLng(TrailData[1][6], TrailData[1][7]));
-      }
-      if (TrailData[1][8] && TrailData[1][9]) {
-        linePath.push(new kakao.maps.LatLng(TrailData[1][8], TrailData[1][9]));
+      const lineDistances = [];
+      for (let i = 0; i < TrailData[1].length; i += 2) {
+        const lat = TrailData[1][i];
+        const lng = TrailData[1][i + 1];
+        if (lat && lng) {
+          linePath.push(new kakao.maps.LatLng(lat, lng));
+        }
       }
 
       const polyline = new kakao.maps.Polyline({
@@ -49,6 +58,14 @@ function LocationMap({ TrailData }) {
 
       polyline.setMap(map);
 
+      // 마커
+      const markerOptions = {
+        position: new kakao.maps.LatLng(TrailData[1][0], TrailData[1][1]),
+        clickable: false,
+      };
+      const marker = new kakao.maps.Marker(markerOptions);
+      marker.setMap(map);
+
       // 기존의 위도 경도 지점에 도트를 표시
       const dotOptions = {
         dotSize: 4,
@@ -56,44 +73,98 @@ function LocationMap({ TrailData }) {
         zIndex: 3,
       };
 
-      const dot1 = new kakao.maps.CustomOverlay({
-        position: new kakao.maps.LatLng(TrailData[1][0], TrailData[1][1]),
-        content: '<span class="dot"></span>',
-        ...dotOptions,
-      });
-      dot1.setMap(map);
+      let sum = 0;
 
-      const dot2 = new kakao.maps.CustomOverlay({
-        position: new kakao.maps.LatLng(TrailData[1][2], TrailData[1][3]),
-        content: '<span class="dot"></span>',
-        ...dotOptions,
-      });
-      dot2.setMap(map);
+      for (let i = 0; i < linePath.length; i++) {
+        const position = linePath[i];
+        const dot = new kakao.maps.CustomOverlay({
+          position: position,
+          content: '<span class="dot"></span>',
+          ...dotOptions,
+        });
 
-      const dot3 = new kakao.maps.CustomOverlay({
-        position: new kakao.maps.LatLng(TrailData[1][4], TrailData[1][5]),
-        content: '<span class="dot"></span>',
-        ...dotOptions,
-      });
-      dot3.setMap(map);
+        dot.setMap(map);
 
-      const dot4 = new kakao.maps.CustomOverlay({
-        position: new kakao.maps.LatLng(TrailData[1][6], TrailData[1][7]),
-        content: '<span class="dot"></span>',
-        ...dotOptions,
-      });
-      dot4.setMap(map);
+        const startPosition = linePath[i];
+        const endPosition = linePath[i + 1];
 
-      const dot5 = new kakao.maps.CustomOverlay({
-        position: new kakao.maps.LatLng(TrailData[1][8], TrailData[1][9]),
-        content: '<span class="dot"></span>',
-        ...dotOptions,
+        if (endPosition) {
+          const lineDistance = calculateDistance(startPosition, endPosition); // 경로의 거리 계산
+
+          sum += lineDistance;
+          lineDistances.push(lineDistance); // 거리를 배열에 저장
+
+          // ...
+
+          // 경로별 거리 표시
+          if (i != linePath.length - 2) {
+            const distanceOverlay = new kakao.maps.CustomOverlay({
+              content: `<div class="dotOverlay">거리 <span class="number">${sum}m</span></div>`,
+              position: endPosition,
+              yAnchor: 1,
+              zIndex: 2,
+            });
+
+            distanceOverlay.setMap(map);
+          }
+        }
+      }
+
+      // ...
+
+      // 총 거리 표시
+      const totalDistance = lineDistances.reduce((acc, cur) => acc + cur, 0);
+
+      const walkTime = Math.floor(totalDistance / 67); // In minutes
+
+      let walkHour = '';
+      let walkMin = '';
+
+      // Convert walking time to hours and minutes if it exceeds 60 minutes
+      if (walkTime >= 60) {
+        walkHour = Math.floor(walkTime / 60) + '시간 ';
+      }
+      walkMin = (walkTime % 60) + '분';
+
+      // Calculate cycling time
+      const bikeTime = Math.floor(totalDistance / 227); // In minutes
+
+      let bikeHour = '';
+      let bikeMin = '';
+
+      // Convert cycling time to hours and minutes if it exceeds 60 minutes
+      if (bikeTime >= 60) {
+        bikeHour = Math.floor(bikeTime / 60) + '시간 ';
+      }
+      bikeMin = (bikeTime % 60) + '분';
+
+      var content = '<ul class="dotOverlay distanceInfo">';
+      content += '  <li>';
+      content += '    <span class="label">총거리</span>';
+      content += '    <span class="number">' + totalDistance + '</span>m';
+      content += '  </li>';
+      content += '  <li>';
+      content += '    <span class="label">도보</span>';
+      content += '    <span class="number">' + walkHour + walkMin + '</span>';
+      content += '  </li>';
+      content += '  <li>';
+      content += '    <span class="label">자전거</span>';
+      content += '    <span class="number">' + bikeHour + bikeMin + '</span>';
+      content += '  </li>';
+      content += '</ul>';
+
+      const totalDistanceOverlay = new kakao.maps.CustomOverlay({
+        content: content,
+        position: linePath[linePath.length - 1],
+        xAnchor: 0,
+        yAnchor: 1.2,
+        zIndex: 3,
       });
-      dot5.setMap(map);
+      totalDistanceOverlay.setMap(map);
     };
-    drawPathAndDots(); // 경로와 도트 그리기 함수 호출
-  }, []);
 
+    drawPathAndDots();
+  }, [TrailData]);
   return (
     <div
       id="map"

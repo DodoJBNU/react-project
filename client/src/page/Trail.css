@@ -134,6 +134,16 @@
     font-family: var(--font-NotoBlack);
     font-size:2vh;
 }
+.ShowCommentsBody
+{
+    font-family: var(--font-NotoMedium);
+    margin-top:1vh;
+    height:11.9vh;
+    background-color: white;
+    word-break:break-all;
+    overflow:auto;
+
+}
 .AddComment
 {
     display: flex;

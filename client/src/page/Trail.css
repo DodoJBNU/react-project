@@ -139,7 +139,7 @@
 {
     margin-top:1vh;
     border-top: 1px solid;
-    border-color: #84b233;;
+    border-color: #84b233;
     display: flex;
     flex-direction: row;
     padding:1.25vh;
@@ -204,3 +204,27 @@
     overflow-x: hidden;
 }
 
+.FavoriteButton
+{
+    display: flex;
+    width:3vw;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border: none;
+    margin-right: 1vw;
+    cursor: pointer;
+}
+.black
+{
+    color: black;
+}
+.green
+{
+    color: #84b233;
+}
+.FavoriteImg
+{
+
+    font-size:3vw;
+}

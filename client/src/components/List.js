@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Form, Link, useLocation } from 'react-router-dom';
 import { TbMapSearch } from 'react-icons/tb';
 import { IoIosAddCircleOutline } from 'react-icons/io';
@@ -7,6 +7,8 @@ import { RxExit } from 'react-icons/rx';
 import axios from 'axios';
 function List({ UpdateLocations }) {
   // 목록 데이터
+  const [buttonName, setButtonName] = useState('');
+
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const user_id = searchParams.get('user_id');
@@ -14,17 +16,35 @@ function List({ UpdateLocations }) {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    addLocationId({})
-      .then((response) => {
+    console.log(buttonName);
+
+    if (buttonName === 'inquiryButton') {
+      addLocationId({})
+        .then((response) => {
+          UpdateLocations(response.data);
+          //window.location.href = url;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else if (buttonName === 'favoriteButton') {
+      addFavorite({}).then((response) => {
         UpdateLocations(response.data);
-        //window.location.href = url;
-      })
-      .catch((error) => {
-        console.log(error);
       });
+    }
+  };
+
+  const addFavorite = () => {
+    const formData = new FormData();
+
+    formData.append('action', 'favorite');
+    formData.append('user_id', user_id);
+
+    return axios.post(url, formData);
   };
   const addLocationId = () => {
     const formData = new FormData();
+    formData.append('action', 'inquiry');
 
     return axios.post(url, formData);
   };
@@ -35,7 +55,13 @@ function List({ UpdateLocations }) {
       <div className="MainList">
         <div className="List">산책로 목록</div>
         <div className="item1">
-          <button className="item1Button" type="submit">
+          <button
+            className="item1Button"
+            type="submit"
+            onClick={() => {
+              setButtonName('inquiryButton');
+            }}
+          >
             <TbMapSearch className="item1Image" />
             <span className="item1Span">산책로 조회</span>
           </button>
@@ -51,12 +77,16 @@ function List({ UpdateLocations }) {
         </div>
 
         <div className="item3">
-          <Link className="item3Link" type="button">
-            <button className="item3Button">
-              <BsBookmarkStar className="item3Image" />
-              <span className="item3Span">즐겨찾기</span>
-            </button>
-          </Link>
+          <button
+            className="item3Button"
+            type="submit"
+            onClick={() => {
+              setButtonName('favoriteButton');
+            }}
+          >
+            <BsBookmarkStar className="item3Image" />
+            <span className="item3Span">즐겨찾기</span>
+          </button>
         </div>
 
         <div className="item4">

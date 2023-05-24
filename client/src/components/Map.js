@@ -22,6 +22,8 @@ function Map({ locations }) {
 
     for (let i = 0; i < locations.length; i++) {
       positions.push({
+        flag: locations[i][4],
+        user_id: locations[i][0],
         id: locations[i][3], // 나중에 title 수정하기. 현재는 trail_id
         title: '',
         latlng: new kakao.maps.LatLng(locations[i][1], locations[i][2]),
@@ -32,15 +34,18 @@ function Map({ locations }) {
 
     for (var i = 0; i < positions.length; i++) {
       // 마커 이미지의 이미지 크기 입니다
-      var imageSize = new kakao.maps.Size(35, 35);
 
       // 마커 이미지를 생성합니다
       //let markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
 
-      let imageIndex = i >= 63 ? i - 63 : null;
-
       let markerImage = null;
-      if (imageIndex !== null) {
+      if (positions[i].flag === 1) {
+        // favorite 항목이라면 별표로 표시.
+        let imageSize = new kakao.maps.Size(24, 35);
+        let imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png';
+        markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+      } else if (positions[i].user_id !== 'root') {
+        let imageSize = new kakao.maps.Size(35, 35);
         let imageSrc = 'https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678111-map-marker-512.png';
         markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
       }

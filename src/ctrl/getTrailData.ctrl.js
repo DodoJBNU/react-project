@@ -48,10 +48,18 @@ const getTrailData = (req, res) => {
                 comments.push([rows[i].id, rows[i].user_id, rows[i].trail_id, rows[i].comment]);
               }
 
-              Trails = [Trail, location, comments];
+              let sql = "SELECT COUNT(*) as cnt FROM Favorites WHERE user_id =? and trail_id =?;";
+              let params = [user_id, trail_id];
 
-              console.log(Trails);
-              res.send(Trails);
+              db.query(sql, params, (err, rows, fields) => {
+                if (rows[0].cnt > 0) {
+                  Trails = [Trail, location, comments, 1]; // 검색된 flag 존재. flag 1로 설정
+                } else {
+                  Trails = [Trail, location, comments, 0]; // 검색된 flag 없음. flag 0으로 설정.
+                }
+                console.log(Trails);
+                res.send(Trails);
+              });
             }
           });
         });
@@ -81,6 +89,37 @@ const getTrailData = (req, res) => {
         });
       }
     });
+  } else if (postFlag === "addFavorite") {
+    let flag = req.body.flag;
+
+    if (flag == 1) {
+      // favorite insert
+      let latitude = req.body.latitude;
+      let longitude = req.body.longitude;
+
+      let sql = "INSERT INTO Favorites VALUES (?, ?, ?, ?, ?);";
+      let params = [user_id, trail_id, latitude, longitude, flag];
+
+      db.query(sql, params, (err, rows, fileds) => {
+        if (err) {
+          console.log(err);
+        } else {
+          res.send("Favorite 추가 성공");
+        }
+      });
+    } else {
+      // favorite delete
+      let sql = "DELETE from Favorites WHERE user_id = ? and trail_id = ?;";
+      let params = [user_id, trail_id];
+
+      db.query(sql, params, (err, rows, fields) => {
+        if (err) {
+          console.log(err);
+        } else {
+          res.send("Favoirte 삭제 성공");
+        }
+      });
+    }
   }
 };
 

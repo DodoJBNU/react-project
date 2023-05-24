@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-
+import myTrailImg from '../img/Headimg.png';
 class UsersLogin extends React.Component {
   constructor(props) {
     super(props);
@@ -61,6 +61,11 @@ class UsersLogin extends React.Component {
     const { user_id, psword, errorMessage, successMessage } = this.state;
     return (
       <form onSubmit={this.handleFormSubmit}>
+        <div style={{ display: 'flex', flexDirection: 'row' }}>
+          <img src={myTrailImg} className="myTrailImg" />
+          <div className="LoginText">마이 산책로</div>
+        </div>
+
         <input type="text" name="user_id" maxLength="25" value={user_id} onChange={this.handleValueChange} placeholder="아이디" />
         <br />
         <input style={{ marginTop: '2vh' }} type="password" name="psword" maxLength="25" value={psword} onChange={this.handleValueChange} placeholder="비밀번호" />

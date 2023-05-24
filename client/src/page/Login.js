@@ -60,20 +60,14 @@ function Login() {
           {/* SIGN IN CONTENT */}
           <div className="col align-items-center flex-col">
             <div className="text sign-in" style={{ display: 'flex' }}>
-              <div className="img sign-in">
-                <img alt="loginimg" src={TrailImages} />
-              </div>
-              <h2 style={{ marginRight: '12vw' }}>마이 산책로</h2>
+              <h2 style={{ marginRight: '12vw' }}></h2>
             </div>
           </div>
           {/* END SIGN IN CONTENT */}
           {/* SIGN UP CONTENT */}
           <div className="col align-items-center flex-col">
             <div className="text sign-up" style={{ display: 'flex' }}>
-              <h2 style={{ marginLeft: '12vw' }}>마이 산책로</h2>
-              <div className="img sign-up">
-                <img alt="loginimg" src={TrailImages} />
-              </div>
+              <h2 style={{ marginLeft: '12vw' }}></h2>
             </div>
           </div>
           {/* END SIGN UP CONTENT */}

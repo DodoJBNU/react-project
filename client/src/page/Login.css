@@ -351,3 +351,17 @@ body {
         font-size: 2rem;
     }
 }
+.LoginText
+{
+    margin-bottom: 2vh;
+    margin-left: 2vh;
+    font-size:3vh;
+    font-family: var(--font-NotoBold);
+    color:#84b233;
+}
+.myTrailImg
+{
+    margin-left: 2vh;
+    width: 5vh;
+    height: 5vh;
+}

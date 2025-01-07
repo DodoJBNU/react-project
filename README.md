@@ -7,6 +7,10 @@
 </p>
 <br/>
 
+## 개발 기간
+2023.03.15 ~ 2023.05.24
+<br/><br/>
+
 ## 웹 개발팀 소개
 <table>
   <tbody>
@@ -18,7 +22,7 @@
 <br/>
 
 
-# 📚 STACKS
+## 📚 STACKS
 
 <div align=center> 
   <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> 

@@ -52,16 +52,16 @@
   </thead>
   <tbody>
     <tr>
-      <td align="center"><video width="329" src="https://github.com/user-attachments/assets/4f3c819c-acf9-4a20-a52f-1a0c918d5bbb" style="max-width: 100%;"></a></td>
-      <td align="center"><video width="329" src="https://github.com/user-attachments/assets/dee860a2-1097-4c39-855b-f268085c990c" style="max-width: 100%;"></a></td>
+      <td align="center"><video width="329" src="https://github.com/user-attachments/assets/4f3c819c-acf9-4a20-a52f-1a0c918d5bbb" style="max-width: 100%;"></video></td>
+      <td align="center"><video width="329" src="https://github.com/user-attachments/assets/dee860a2-1097-4c39-855b-f268085c990c" style="max-width: 100%;"></video></td>
     </tr>
     <tr>
       <th align="center">산책로 댓글 기능</td>
       <th align="center">즐겨찾기 기능</td>
     </tr>
     <tr>
-      <td align="center"><video width="329" src="https://github.com/user-attachments/assets/e77cfec0-9d6b-4d2a-9474-6dd1a1c66c45" style="max-width: 100%;"></a></td>
-      <td align="center"><video width="329" src="https://github.com/user-attachments/assets/e2900e07-eb18-4729-be34-96cb464e8ebb" style="max-width: 100%;"></a></td>
+      <td align="center"><video width="329" src="https://github.com/user-attachments/assets/e77cfec0-9d6b-4d2a-9474-6dd1a1c66c45" style="max-width: 100%;"></video></td>
+      <td align="center"><video width="329" src="https://github.com/user-attachments/assets/e2900e07-eb18-4729-be34-96cb464e8ebb" style="max-width: 100%;"></video></td>
     </tr>
   </tbody>
   <tbody>
@@ -69,7 +69,7 @@
       <th align="center">산책로 조회 페이지</td>
     </tr>
     <tr>
-      <td align="center"><video width="329" src="https://github.com/user-attachments/assets/3ef46b0d-373b-4cb9-abc8-3f4b5d6f4f8f" style="max-width: 100%;"></a></td>
+      <td align="center"><video width="329" src="https://github.com/user-attachments/assets/3ef46b0d-373b-4cb9-abc8-3f4b5d6f4f8f" style="max-width: 100%;"></video></td>
     </tr>
   </tbody>
 </table>

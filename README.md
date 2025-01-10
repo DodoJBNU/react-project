@@ -53,7 +53,7 @@
   <tbody>
     <tr>
       <td align="center"><video width="329" src="https://github.com/user-attachments/assets/4f3c819c-acf9-4a20-a52f-1a0c918d5bbb" style="max-width: 100%;"></video></td>
-      <td align="center"><video width="329" src="https://github.com/user-attachments/assets/dee860a2-1097-4c39-855b-f268085c990c" style="max-width: 100%;"></video></td>
+      <td align="center"><video width="329" src="https://github.com/user-attachments/assets/baa30ee0-4cb6-4f77-a7ae-5e1fc185d0c2" style="max-width: 100%;"></video></td>
     </tr>
     <tr>
       <th align="center">산책로 댓글 기능</td>
